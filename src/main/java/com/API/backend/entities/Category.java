@@ -36,6 +36,42 @@ public class Category {
         this.type = type;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public EnumType getType() {
+        return type;
+    }
+
+    public void setType(EnumType type) {
+        this.type = type;
+    }
+
 }
 
 
