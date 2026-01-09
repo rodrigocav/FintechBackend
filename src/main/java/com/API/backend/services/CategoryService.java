@@ -3,10 +3,13 @@ package com.API.backend.services;
 
 
 
+import org.springframework.stereotype.Service;
+
 import com.API.backend.dtos.category.CategoryResponse;
 import com.API.backend.entities.Category;
 import com.API.backend.repositories.CategoryRepository;
 
+@Service
 public class CategoryService {
     private final CategoryRepository repository;
 

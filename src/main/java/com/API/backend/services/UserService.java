@@ -2,11 +2,14 @@ package com.API.backend.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.API.backend.dtos.user.UserRequest;
 import com.API.backend.dtos.user.UserResponse;
 import com.API.backend.entities.User;
 import com.API.backend.repositories.UserRepository;
 
+@Service
 public class UserService {
     private final UserRepository repository;
 
