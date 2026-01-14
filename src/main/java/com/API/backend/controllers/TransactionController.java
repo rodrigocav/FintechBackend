@@ -3,11 +3,11 @@ package com.API.backend.controllers;
 import java.sql.Date;
 import java.util.List;
 
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.API.backend.dtos.transaction.TransactionRequest;
@@ -31,8 +31,8 @@ public class TransactionController {
 
     @GetMapping("/betweenDates")
     public List<TransactionResponse> filterByDate(
-        @Param("startDate") Date startDate,
-        @Param("endDate") Date endDate
+        @RequestParam("startDate") Date startDate,
+        @RequestParam("endDate") Date endDate
     ) {
 
         return service.filterByDate(startDate, endDate);
