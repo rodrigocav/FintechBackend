@@ -6,13 +6,13 @@ import java.util.List;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.API.backend.dtos.transaction.TransactionRequest;
 import com.API.backend.dtos.transaction.TransactionResponse;
 import com.API.backend.services.TransactionService;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
@@ -42,7 +42,7 @@ public class TransactionController {
     
 
     @PostMapping
-    public TransactionResponse create(TransactionRequest request) {
+    public TransactionResponse create(@RequestBody TransactionRequest request) {
         return service.create(request);
     }
 }

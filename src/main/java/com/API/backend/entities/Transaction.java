@@ -5,6 +5,7 @@ import com.API.backend.enums.*;
 
 import java.sql.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -29,13 +30,14 @@ public class Transaction {
     private float amount;
     private Date date;
     @Enumerated(EnumType.STRING)
-    private EnumType type;
+    @Column(name = "type")
+    private EnumIncomingType type;
     @Enumerated(EnumType.STRING)
     private EnumStatus status;
 
     public Transaction(){ }
     
-    public Transaction(User user, String description, float amount, Date date, EnumType type, EnumStatus status){
+    public Transaction(User user, String description, float amount, Date date, EnumIncomingType type, EnumStatus status){
         this.user = user;
         this.description = description;
         this.amount = amount;
@@ -81,11 +83,11 @@ public class Transaction {
         this.date = date;
     }
 
-    public EnumType getType() {
+    public EnumIncomingType getType() {
         return type;
     }
 
-    public void setType(EnumType type) {
+    public void setType(EnumIncomingType type) {
         this.type = type;
     }
 

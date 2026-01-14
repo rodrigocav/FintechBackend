@@ -1,6 +1,6 @@
 package com.API.backend.enums;
 
-public enum EnumType {
+public enum EnumIncomingType {
     RECEITA, DESPESA
 }
 
