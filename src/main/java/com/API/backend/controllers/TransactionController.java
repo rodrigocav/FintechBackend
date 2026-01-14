@@ -1,6 +1,6 @@
 package com.API.backend.controllers;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,8 +31,8 @@ public class TransactionController {
 
     @GetMapping("/betweenDates")
     public List<TransactionResponse> filterByDate(
-        @RequestParam("startDate") Date startDate,
-        @RequestParam("endDate") Date endDate
+        @RequestParam("startDate") LocalDate startDate,
+        @RequestParam("endDate") LocalDate endDate
     ) {
 
         return service.filterByDate(startDate, endDate);

@@ -1,6 +1,6 @@
 package com.API.backend.services;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -62,7 +62,7 @@ public class TransactionService {
     }
 
     @Query(value  = "SELECT * FROM transactions t WHERE t.date BETWEEN :startDate AND :endDate", nativeQuery = true)
-    public List<TransactionResponse> filterByDate(@Param("startDate") Date startDate, @Param("endDate") Date endDate) {
+    public List<TransactionResponse> filterByDate(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate) {
         return repository.findAll()
                .stream()
                .map(this::toResponse)

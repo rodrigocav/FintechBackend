@@ -3,7 +3,7 @@ import com.API.backend.enums.*;
 
 
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,7 +28,7 @@ public class Transaction {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
     private float amount;
-    private Date date;
+    private LocalDate date;
     @Enumerated(EnumType.STRING)
     @Column(name = "type")
     private EnumIncomingType type;
@@ -37,7 +37,7 @@ public class Transaction {
 
     public Transaction(){ }
     
-    public Transaction(User user, String description, float amount, Date date, EnumIncomingType type, EnumStatus status){
+    public Transaction(User user, String description, float amount, LocalDate date, EnumIncomingType type, EnumStatus status){
         this.user = user;
         this.description = description;
         this.amount = amount;
@@ -75,11 +75,11 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
