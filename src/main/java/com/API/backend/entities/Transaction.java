@@ -34,9 +34,9 @@ public class Transaction {
 
     public Transaction(){ }
     
-    public Transaction(String description, User user, float amount, Date date, EnumType type, EnumStatus status){
-        this.description = description;
+    public Transaction(User user, String description, float amount, Date date, EnumType type, EnumStatus status){
         this.user = user;
+        this.description = description;
         this.amount = amount;
         this.date = date;
         this.type = type;
