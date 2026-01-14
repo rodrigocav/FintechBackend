@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.API.backend.dtos.transaction.TransactionRequest;
 import com.API.backend.dtos.transaction.TransactionResponse;
 import com.API.backend.entities.Transaction;
+import com.API.backend.entities.User;
 import com.API.backend.repositories.TransactionRepository;
 import com.API.backend.repositories.UserRepository;
 
@@ -37,8 +38,11 @@ public class TransactionService {
     }
 
     public TransactionResponse create(TransactionRequest request) {
+
+        User user = userRepository.findById(request.userId()).get();
+
         Transaction transaction = new Transaction(
-            request.user(),
+            user,
             request.description(),
             request.amount(),
             request.date(),
