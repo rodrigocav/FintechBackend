@@ -61,9 +61,8 @@ public class TransactionService {
                 .toList();
     }
 
-    @Query(value  = "SELECT * FROM transactions t WHERE t.date BETWEEN :startDate AND :endDate", nativeQuery = true)
-    public List<TransactionResponse> filterByDate(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate) {
-        return repository.findAll()
+    public List<TransactionResponse> filterByDate(LocalDate startDate, LocalDate endDate) {
+        return repository.findBetweenDates(startDate, endDate)
                .stream()
                .map(this::toResponse)
                .toList();
