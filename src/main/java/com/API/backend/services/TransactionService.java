@@ -14,6 +14,8 @@ import com.API.backend.entities.User;
 import com.API.backend.repositories.TransactionRepository;
 import com.API.backend.repositories.UserRepository;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class TransactionService {
 
@@ -39,7 +41,7 @@ public class TransactionService {
 
     public TransactionResponse create(TransactionRequest request) {
 
-        User user = userRepository.findById(request.userId()).get();
+        User user = userRepository.findById(request.userId()).orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado!"));
 
         Transaction transaction = new Transaction(
             user,
