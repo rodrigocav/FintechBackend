@@ -11,13 +11,16 @@ import com.API.backend.dtos.transaction.TransactionRequest;
 import com.API.backend.dtos.transaction.TransactionResponse;
 import com.API.backend.entities.Transaction;
 import com.API.backend.repositories.TransactionRepository;
+import com.API.backend.repositories.UserRepository;
 
 @Service
 public class TransactionService {
 
+    private final UserRepository userRepository;
     private final TransactionRepository repository;
 
-    public TransactionService(TransactionRepository repository) {
+    public TransactionService(UserRepository userRepository,TransactionRepository repository) {
+        this.userRepository = userRepository;
         this.repository = repository;
     }
 
@@ -38,6 +41,7 @@ public class TransactionService {
             request.user(),
             request.description(),
             request.amount(),
+            request.date(),
             request.type(),
             request.status()
         );
@@ -57,6 +61,10 @@ public class TransactionService {
                .stream()
                .map(this::toResponse)
                .toList();
+    }
+
+    public TransactionResponse findById(Long id) {
+        return toResponse(repository.findById(id).orElseThrow());
     }
     
 }
