@@ -31,8 +31,6 @@ public class User {
     private String password;
     @OneToMany(mappedBy = "user")
     private List<Category> categories = new ArrayList<Category>();
-    @OneToMany(mappedBy = "user")
-    private List<Transaction> transactions = new ArrayList<Transaction>();
     
     public User(){ }
     
@@ -77,14 +75,5 @@ public class User {
     public void addCategory(Category category) {
         this.categories.add(category);
     }
-
-    public List<Transaction> getTransactions() {
-        return transactions;
-    }
-
-    public void addTransaction(Transaction transaction) {
-        this.transactions.add(transaction);
-    }
-
     
 }

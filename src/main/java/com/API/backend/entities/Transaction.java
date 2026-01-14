@@ -7,13 +7,13 @@ import java.sql.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "transactions")
@@ -21,15 +21,16 @@ public class Transaction {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
     private Long id;
     private String description;
-    @ManyToOne
-    @JoinColumn(name = "user_id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
     private float amount;
     private Date date;
+    @Enumerated(EnumType.STRING)
     private EnumType type;
+    @Enumerated(EnumType.STRING)
     private EnumStatus status;
 
     public Transaction(){ }
