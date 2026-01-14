@@ -7,7 +7,7 @@ import com.API.backend.enums.EnumStatus;
 
 import jakarta.persistence.EnumType;
 
-public record TransactionRequest(String description, User user, float amount, Date date, EnumType type, EnumStatus status) {
+public record TransactionRequest(User user, String description, float amount, EnumType type, EnumStatus status , Date date) {
 
     
 }
