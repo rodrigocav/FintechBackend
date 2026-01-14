@@ -44,6 +44,10 @@ public class Transaction {
 
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getDescription() {
         return description;
     }
