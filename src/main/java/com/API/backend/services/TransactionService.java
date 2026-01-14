@@ -16,13 +16,14 @@ public class TransactionService {
     }
 
     private TransactionResponse toResponse(Transaction transaction) {
-        return TransactionResponse(
+        return new TransactionResponse(
             transaction.getId(),
+            transaction.getUser(),
             transaction.getDescription(),
             transaction.getAmount(),
             transaction.getType(),
             transaction.getStatus(),
-            transaction.getUser()
+            transaction.getDate()
         );
     }
     
