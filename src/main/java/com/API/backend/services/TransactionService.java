@@ -3,8 +3,6 @@ package com.API.backend.services;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.API.backend.dtos.transaction.TransactionRequest;
