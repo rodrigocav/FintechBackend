@@ -1,13 +1,12 @@
 package com.API.backend.dtos.transaction;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
-import com.API.backend.entities.User;
+import com.API.backend.enums.EnumIncomingType;
 import com.API.backend.enums.EnumStatus;
 
-import jakarta.persistence.EnumType;
 
-public record TransactionRequest(String description, User user, float amount, Date date, EnumType type, EnumStatus status) {
+public record TransactionRequest(Long userId, String description, float amount, EnumIncomingType type, EnumStatus status , LocalDate date) {
 
     
 }

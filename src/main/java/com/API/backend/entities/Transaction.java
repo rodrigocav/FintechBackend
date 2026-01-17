@@ -3,17 +3,18 @@ import com.API.backend.enums.*;
 
 
 
-import java.sql.Date;
+import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "transactions")
@@ -21,27 +22,33 @@ public class Transaction {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
     private Long id;
     private String description;
-    @ManyToOne
-    @JoinColumn(name = "user_id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
     private float amount;
-    private Date date;
-    private EnumType type;
+    private LocalDate date;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type")
+    private EnumIncomingType type;
+    @Enumerated(EnumType.STRING)
     private EnumStatus status;
 
     public Transaction(){ }
     
-    public Transaction(String description, User user, float amount, Date date, EnumType type, EnumStatus status){
-        this.description = description;
+    public Transaction(User user, String description, float amount, LocalDate date, EnumIncomingType type, EnumStatus status){
         this.user = user;
+        this.description = description;
         this.amount = amount;
         this.date = date;
         this.type = type;
         this.status = status;
 
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getDescription() {
@@ -68,19 +75,19 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public EnumType getType() {
+    public EnumIncomingType getType() {
         return type;
     }
 
-    public void setType(EnumType type) {
+    public void setType(EnumIncomingType type) {
         this.type = type;
     }
 
